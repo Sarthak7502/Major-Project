@@ -1,0 +1,56 @@
+1. Install Apache server on Ubuntu
+sudo apt install apache2
+
+2. Install php runtime and php mysql connector
+sudo apt install php libapache2-mod-php php-mysql
+
+3. Install MySQL server
+sudo apt install mysql-server 
+
+4. Login to MySQL server
+sudo mysql -u root
+
+5. Change authentication plugin to mysql_native_password
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'Test@123';
+
+6. Create a new database user for wordpress
+CREATE USER 'wp_user'@localhost IDENTIFIED BY 'Test@123';
+
+7. Create a database for wordpress
+CREATE DATABASE wp;
+
+8. Grant all privilges on the database 'wp' to the newly created user
+GRANT ALL PRIVILEGES ON wp.* TO 'wp_user'@localhost;
+
+* Ctrl+D to come out of Mysql Prompt *
+
+9. Download wordpress
+cd /tmp
+wget https://wordpress.org/latest.tar.gz
+ls
+You will find " latest.tar.gz "
+
+10. Unzip
+tar -xvf latest.tar.gz
+ls
+You will find " wordpress " folder
+
+11. Move wordpress folder to apache document root
+sudo mv wordpress/ /var/www/html/
+cd /var/www/html/
+ls
+You will find " wordpress " in the path
+
+12. Go to wordpress directory, create a new file and paste the copied code to fix the error
+cd wordpress/
+nano wp-config.php (paste the code inside the file)
+
+13. To serve the wordpress site on root directory ( Modify Apache configuration )
+cd /etc/apache2/sites-available/
+You will find " 000-default.conf default-ssl.conf "
+Edit - 000-default.conf 
+sudo nano 000-default.conf ( opening file with nano editor )
+Change - DocumentRoot /var/www/html to DocumentRoot /var/www/html/wordpress
+
+14. To restart apache
+sudo systemclt restart apache2
