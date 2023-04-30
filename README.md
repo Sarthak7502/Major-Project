@@ -1,5 +1,5 @@
-# Major-Project
-Wordpress Site Deployment on Cloud 
+# Major-Project (Wordpress Site Deployment on Cloud)
+CloudWP: The fast and easy way to deploy your WordPress site on the cloud
 
 The WordPress Site Deployment on Cloud project involves setting up a WordPress website on a cloud hosting provider like AWS, Google Cloud, or Microsoft Azure. By utilizing the advantages of cloud hosting, such as high availability, automated scaling, and load balancing, the project seeks to provide a scalable and stable website.
 
